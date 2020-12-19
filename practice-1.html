@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Table</title>
+	<!-- <link rel="stylesheet"  href="style-1.css"> -->
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			padding-left: 80px;
+			padding-right: 30px;
+			background-color: #A6F7B6;
+		}
+
+		input[type=text],
+		select,
+		textarea {
+			width: 100%;
+			padding: 12px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			resize: vertical;
+		}
+
+		label {
+			padding: 12px 12px 12px 0;
+			display: inline-block;
+		}
+
+
+		.container {
+			border-radius: 5px;
+			background-color: #DAF7A6;
+			padding: 20px;
+		}
+
+		.col-75 {
+			float: left;
+			width: 75%;
+			margin-top: 6px;
+		}
+
+		.col-50 {
+			float: left;
+			width: 50%;
+			margin-top: 6px;
+		}
+
+		/* Clear floats after the columns */
+		.row:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+
+		table {
+			margin-top: 50px;
+			text-align: center;
+			width: 47%;
+			background: #333;
+			color: #fff;
+
+		}
+
+		th {
+			height: 70px;
+		}
+
+		tr {
+			height: 70px;
+		}
+
+		.button {
+			background-color: #4CAF50;
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+
+		}
+
+		#show th,
+		#show td {
+			padding: 13px;
+		}
+
+		#btna td input {
+			width: 100%;
+		}
+
+		/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+		@media screen and (max-width: 600px) {
+
+			.col-25,
+			.col-75,
+			input[type=submit] {
+				width: 100%;
+				margin-top: 0;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<h1 align="center">Match Schedule</h1>
+	<center>
+		<table border="4" align="left">
+			<thead>
+				<tr>
+					<th>Team-1 Name </th>
+					<td><input type="text" name="t1name" id="t1name"></td>
+				</tr>
+				<tr>
+					<th>Team-2 Name </th>
+					<td><input type="text" name="t2name" id="t2name"></td>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr>
+					<th>
+						<div class="row">
+							<div class="col-25">
+								<label for="match date">Match Date:</label>
+
+							</div>
+					</th>
+					<td>
+						<div class="col-75">
+							<input type="date" id="match date" name="match date">
+
+
+						</div>
+					</td>
+				</tr>
+
+
+				<tr>
+					<th>
+						<div class="row">
+							<div class="col-25">
+								<label for="appt">Select a time:</label>
+
+							</div>
+					</th>
+					<td>
+						<div class="col-75">
+							<input type="time" id="appt" name="appt">
+
+
+						</div>
+					</td>
+				</tr>
+
+				<tr id="btn">
+
+					<td colspan="2"><input type="button" name="button" id="btn" value="Add" class="button"
+							onclick="AddRow()"></td>
+				</tr>
+
+			</tbody>
+		</table>
+		<table border="4" id="show" align="right">
+			<thead>
+				<tr>
+					<th>Team-1 Name</th>
+					<th>Team-2 Name</th>
+					<th>Match Date</th>
+					<th>Match Time</th>
+
+				</tr>
+			</thead>
+		</table>
+	</center>
+
+	<script>
+		var list1 = [];
+		var list2 = [];
+		var list3 = [];
+		var list4 = [];
+
+
+		var n = 1;
+		var x = 0;
+
+		function AddRow() {
+			var AddRown = document.getElementById('show');
+			var NewRow = AddRown.insertRow(n);
+
+			list1[x] = document.getElementById('t1name').value;
+			list2[x] = document.getElementById('t2name').value;
+			list3[x] = document.getElementById('match date').value;
+			list4[x] = document.getElementById('appt').value;
+
+			var cel1 = NewRow.insertCell(0);
+			var cel2 = NewRow.insertCell(1);
+			var cel3 = NewRow.insertCell(2);
+			var cel4 = NewRow.insertCell(3);
+
+
+			cel1.innerHTML = list1[x];
+			cel2.innerHTML = list2[x];
+			cel3.innerHTML = list3[x];
+			cel4.innerHTML = list4[x];
+
+
+			n++;
+			x++;
+
+
+
+		}
+	</script>
+</body>
+
+</html>

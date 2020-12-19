@@ -1,90 +1,93 @@
 <?php
-
-include'config.php';
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $phone = $_POST['phone'];
-  $message = $_POST['message'];
-
-  
-
-}
+require('top.inc.php');
 ?>
+ <div style="margin-left:16%;  width: 90%;">
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item active"><a href="home.php">Home</a></li>
+         
+          <li class="breadcrumb-item active">News</li>
+        </ul>       
+       </div>
 
-<!DOCTYPE html>
-<html lang="en">
+  <div style=" width: 70%; margin-left: 20%; margin-top: 5%">
+  	    <div class="text-right">
+  	    <a   class="btn btn-primary" href="AddNews.php">Add News</a> 
+  	    	
+   </div>
+    <table class="table table-bordered">
+       <tr>
+         <th>Id</th>
+         <th>Title</th>
+         <th>Description</th>
+         <th>Date</th>
+         <th>Category</th>
+         <th>Thumbnail</th>
+         <th>Admin</th>
+         
+         <th>Edit</th>
+         <th>Delete</th>
+       </tr>
+        <?php
+		include('connection.inc.php');
+		
+           $page=$_GET['page'];
+           if($page=="" || $page==1){
+            $page1=0;
+           }
+           else{
+              $page1=($page*3)-3;
 
-<head>
-    <title>Welcome | Home</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <style>
-              
-.card-img-top {
-  width: 100%;
-  height: 15vw;
-  object-fit: cover;
-}
+           }
+           
+      $query=mysqli_query($conn,"select * from news limit $page1,3");
+       while ($row=mysqli_fetch_array($query)) {
+         ?>
+         <tr>
+           <td><?php echo $row['id']; ?></td>
+            <td><?php echo $row['title']; ?></td>
+             <td><?php echo substr($row['description'],0,100 ); ?></td>
+               <td><?php echo date("F jS ,y", strtotime($row['date'])); ?></td>
+                 <td><?php echo $row['category']; ?></td>
+                   <td><img class="img img-thumbnail" src="images/<?php echo $row['thumbnail'];?>" alt="" width="150" height="150" ></td>
+                   <td><?php echo $row['admin'];?></td>
+                   <td><a class="btn btn-info btn-sm" href="edit.php?edit=<?php echo $row['id'];?>">edit</a></td>
+                     <td><a class="btn btn-danger btn-sm" href="delete.php?del=<?php echo $row['id'];?>">delete</a></td>
+                    
+         </tr>
+         
+       
+     
+       <?php }  ?>
+         </table>
+             <ul class="pagination">
+               <li class="page-item disabled">
+                 <a href="#" class="page-link" >Pervious</a>
+               </li>
+              <?php
 
-        </style>
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
-    <script src="script.js"></script>
-    <!-- <script src="jquery.validate.min.js"></script> -->
-</head>
+       $sql=mysqli_query($conn,"select * from news");
+       $count=mysqli_num_rows($sql);
+       $a=$count/3;
+        ceil($a);
+        for ($b=1; $b <=$a ; $b++) { 
+          ?>
+      
+             
+         <li class="page-item"><a class="page-link" href="news.php?page=<?php echo $b;?>"><?php echo $b; ?></a></li>
+          
+       
+          <?php 
+        }
+       ?>
+                <li class="page-item disabled">
+                 <a href="#" class="page-link" >Next</a>
+               </li>
+       </ul>
 
-<body>
+       
 
-    <section>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-    </section>
+  </div>
 
-    <div class="card-group">
-        <div class="card">
-          <img class="card-img-top" src="img/logo1.png" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card-img-top" src="img/logo1.png" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card-img-top" src="img/logo1.png" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-      </div>
-
-
-</body>
-<div class="copyright">
-    <p>©2020 | All right reserved by RAKA Team</p>
-
-</div>
-<div>
-    <button href="Admin-Page-master\admin\login.php">admin login</button>
-</div>
-</body>
-
-</html>
+<?php
+require('footer.inc.php');
+?>
