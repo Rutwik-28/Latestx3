@@ -1,44 +1,44 @@
-function validationcontactus(){
+// function validationcontactus(){
 
-    // <form class="contact-bg" id="contact-form" name="contact" method="post" >
-    // <input type="text" name="name" class="form-control" placeholder="Your Name">
-    // <input type="email" name="email" class="form-control" placeholder="Your E-mail">
-    // <input type="text" name="phone" class="form-control" placeholder="Phone Number">
-    // <textarea name="message" class="form-control" placeholder="Your Message" style="height:120px"></textarea>
-    // <button id="submit" type="submit" name="submit" class="btn btn-glance">Send</button>
-    var name = document.getElementById("name").value;
-    var email = document.getElementById("email").value;
-    var phone = document.getElementById("phone").value;
-    var message = document.getElementById("message").value;
-    var error_message = document.getElementById("error_message");
+//     // <form class="contact-bg" id="contact-form" name="contact" method="post" >
+//     // <input type="text" name="name" class="form-control" placeholder="Your Name">
+//     // <input type="email" name="email" class="form-control" placeholder="Your E-mail">
+//     // <input type="text" name="phone" class="form-control" placeholder="Phone Number">
+//     // <textarea name="message" class="form-control" placeholder="Your Message" style="height:120px"></textarea>
+//     // <button id="submit" type="submit" name="submit" class="btn btn-glance">Send</button>
+//     var name = document.getElementById("name").value;
+//     var email = document.getElementById("email").value;
+//     var phone = document.getElementById("phone").value;
+//     var message = document.getElementById("message").value;
+//     var error_message = document.getElementById("error_message");
     
-    error_message.style.padding = "10px";
+//     error_message.style.padding = "10px";
     
-    var text;
-    if(name.length < 5){
-      text = "Please Enter valid Name";
-      error_message.innerHTML = text;
-      return false;
-    }
-    if(email.indexOf("@") == -1 || email.length < 6){
-      text = "Please Enter valid Email";
-      error_message.innerHTML = text;
-      return false;
-    }
+//     var text;
+//     if(name.length < 5){
+//       text = "Please Enter valid Name";
+//       error_message.innerHTML = text;
+//       return false;
+//     }
+//     if(email.indexOf("@") == -1 || email.length < 6){
+//       text = "Please Enter valid Email";
+//       error_message.innerHTML = text;
+//       return false;
+//     }
    
-    if(isNaN(phone) || phone.length != 10){
-      text = "Please Enter valid Phone Number";
-      error_message.innerHTML = text;
-      return false;
-    }
-    if(message.length <= 140){
-      text = "Please Enter More Than 140 Characters";
-      error_message.innerHTML = text;
-      return false;
-    }
-    alert("Form Submitted Successfully!");
-    return true;
-  }
+//     if(isNaN(phone) || phone.length != 10){
+//       text = "Please Enter valid Phone Number";
+//       error_message.innerHTML = text;
+//       return false;
+//     }
+//     if(message.length <= 140){
+//       text = "Please Enter More Than 140 Characters";
+//       error_message.innerHTML = text;
+//       return false;
+//     }
+//     alert("Form Submitted Successfully!");
+//     return true;
+//   }
 
 
 
@@ -69,7 +69,7 @@ function validateForm(){
     clearErrors();
 
     //perform validation and if validation fails, set the value of returnval to false
-    var username = document.forms['myForm']["username"].value;
+    var username = document.forms['myForm']["uname"].value;
     if (username.length<5){
         seterror("username", "*Length of name is too short");
         returnval = false;
@@ -92,7 +92,7 @@ function validateForm(){
         returnval = false;
     }
 
-    var password = document.forms['myForm']["password"].value;
+    var password = document.forms['myForm']["pass"].value;
     if (password.length < 6){
 
         // Quiz: create a logic to allow only those passwords which contain atleast one letter, one number and one special character and one uppercase letter
@@ -100,11 +100,11 @@ function validateForm(){
         returnval = false;
     }
 
-    // var cpassword = document.forms['myForm']["cpass"].value;
-    // if (cpassword != password){
-    //     seterror("cpassword", "*Password and Confirm password should match!");
-    //     returnval = false;
-    // }
+    var cpassword = document.forms['myForm']["cpass"].value;
+    if (cpassword != password){
+        seterror("cpassword", "*Password and Confirm password should match!");
+        returnval = false;
+    }
 
     return returnval;
 }

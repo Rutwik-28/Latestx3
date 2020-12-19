@@ -52,7 +52,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <h2>Login Form</h2>
+              
 
                 <form action="" method="post">
 

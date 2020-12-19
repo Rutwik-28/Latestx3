@@ -1,3 +1,59 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $name = $_POST['user'];
+    $DOB = $_POST['Date'];
+    $age = $_POST['age'];
+    $address = $_POST['address'];
+    $number= $_POST['number'];
+    $email = $_POST['email'];
+    $skill = $_POST['skill'];
+    $username1 = $_POST['username'];
+    $password2 = $_POST['password'];
+  
+  // Connecting to the Database
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $database = "cricket_1";
+
+  // Create a connection
+  $conn = mysqli_connect($servername, $username, $password, $database);
+  // Die if connection was not successful
+  if (!$conn){
+      die("Sorry we failed to connect: ". mysqli_connect_error());
+  }
+  else{ 
+    // Submit these to a database
+    // Sql query to be executed 
+    
+     $sql = "INSERT INTO `player_info` ( `p_name`, `DOB`, `age`, `address`, `ph_no`, `email_id`, `skill`, `username`, `password`)
+     VALUES ('$name', '$DOB', '$age', '$address', '$number', '$email', '$skill', '$username1', '$password2');";
+    $result = mysqli_query($conn, $sql);
+
+    if($result){
+      echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Success!</strong> Your entry has been submitted successfully!
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>';
+    }
+    else{
+        // echo "The record was not inserted successfully because of this error ---> ". mysqli_error($conn);
+        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>Error!</strong> We are facing some technical issue and your entry ws not submitted successfully! We regret the inconvinience caused!
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>';
+    }
+
+  }
+
+}
+
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -10,9 +66,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link href="ionicons/css/ionicons.min.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="css/style.css">
-   
+
 
 
 
@@ -49,14 +105,20 @@
             </div>
         </div>
     </nav>
+    <!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1RzLoyCGcOuJP2l82TUIVy1tfFl6Z7Epo6A&usqp=CAU" alt="Smiley face" height="500" width="300" style="float:right"> -->
+
 
     <div class="container">
         <div class="row">
             <div class=" col-lg-6">
+                
                 <h2>Registration Form</h2>
 
 
-                <form action="" name="myForm" onsubmit="return validateForm()" method="POST">
+                <form action="" name="myForm"  method="post">
+                    <br>
+                    <br>
+                    <br>
 
                     <div class="form-group" id="user">
                         <label>Player Name</label>
@@ -85,7 +147,7 @@
 
                     <div class="form-group" id="number">
                         <label>Phone Number</label>
-                        <input type="tel" name="number" class="form-control" placeholder="Enter Number" required>
+                        <input type="text" min="1111111111" max="9999999999" name="number" class="form-control" placeholder="Enter Number" required>
                         <b><span class="formerror"></span></b>
                     </div>
 
@@ -115,7 +177,7 @@
 
                     <div class="form-group" id="username">
                         <label>Username</label>
-                        <input type="Username" name="username" class="form-control" placeholder="Enter Username"
+                        <input type="Username" name="uname" class="form-control" placeholder="Enter Username"
                             required>
                         <b><span class="formerror"></span></b>
 
@@ -123,14 +185,15 @@
 
                     <div class="form-group" id="password">
                         <label>Password</label>
-                        <input type="Password" name="password" class="form-control" placeholder="Enter Password"
+                        <input  type="Password" minlength=6 name="pass" class="form-control" placeholder="Enter Password"
                             required>
                         <b><span class="formerror"></span></b>
                     </div>
 
                     <div>
-                        <input type="submit" class="but" name="submit" value="Register">
-                    </div>
+                         <input type="submit" class="but" name="submit" value="Submit"> 
+                     </div> 
+                    
 
                 </form>
 
@@ -138,6 +201,9 @@
             </div>
         </div>
     </div>
+
+    
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -149,7 +215,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
-    <script src="script.js"></script>
+
 
 
     <div class="copyright">
@@ -159,6 +225,7 @@
 
 
 </body>
+
 
 
 

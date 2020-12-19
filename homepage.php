@@ -45,7 +45,7 @@ $result = mysqli_query($conn, $sql);
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link href="ionicons/css/ionicons.min.css" rel="stylesheet">
+
   <link rel="stylesheet" href="css/style.css">
   <script src="script.js"></script>
   <!-- <script src="jquery.validate.min.js"></script> -->
@@ -142,7 +142,47 @@ $result = mysqli_query($conn, $sql);
       </div>
     </div>
   </div>
+     <!-- News Letter starts here-->
+     <!-- <div class="card-deck" class="offset">
+            <div class="card">
+                <img class="card-img-top" src="img/cricket2.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                        additional content.
+                        This content is a little bit longer.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="img/cricket2.png"
+                    alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="img/cricket2.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                        additional content.
+                        This card has even longer content than the first to show that equal height action.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+        </div> -->
 
+        <!--News Letter ends here-->
 
   <!----------- THIRD DIV -------------->
 
