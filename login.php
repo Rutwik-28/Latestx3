@@ -1,3 +1,25 @@
+<?php
+include'config.php';
+$msg='';
+// if(isset($_POST['submit'])){
+// 	$username=($con,$_POST['username']);
+// 	$password=($con,$_POST['password']);
+// 	$sql="select * from player_info where username='$username' and password='$password'";
+// 	$res=mysqli_query($con,$sql);
+// 	$count=mysqli_num_rows($res);
+// 	if($count>0){
+// 		$_SESSION['PLAYER_LOGIN']='yes';
+// 		$_SESSION['PLAYER_USERNAME']=$username;
+// 		header('location:profile_page.php');
+// 		die();
+// 	}else{
+// 		$msg="Please enter correct login details";	
+// 	}
+	
+// }
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -27,23 +49,10 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse-man">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">LOGIN</a></li>
-                    <li><a href="#">ABOUT US</a></li>
+                    <li><a href="login.pphp">LOGIN</a></li>
                     <li><a href="#">SEARCH</a></li>
                     <li><a href="#">DISPLAY</a></li>
-                    <!--mahit nahi ata kahi hyabadal-->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                            aria-expanded="false"><i class="glyphicon glyphicon-cog"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li class="divider"></li>
-                            <li><a href="../Profile/profile.php"><i class="glyphicon glyphicon-user"></i>&nbsp;
-                                    Profile</a></li>
-                            <li class="divider"></li>
-                            <li><a href="../Profile/logout.php"><i class="glyphicon glyphicon-log-out"></i>&nbsp;
-                                    Logout</a></li>
-                        </ul>
-                    </li>
+               
                 </ul>
             </div>
         </div>
@@ -60,7 +69,7 @@
 
                     <div class="form-group">
                         <label>Username</label>
-                        <input type="text" name="user" class="form-control">
+                        <input type="text" name="username" class="form-control">
                     </div>
 
                     <div class="form-group">
@@ -68,7 +77,7 @@
                         <input type="Password" name="password" class="form-control">
                     </div>
 
-                    <button class="btn btn-primary my-nav"> Login </button>
+                    <button type="submit" name="submit" class="btn btn-primary my-nav"><a href="profile_page.php"> Login </button>
                     <p>If new user?<button class="btn btn-primary my-nav"><a href="registration.php"> Register
                             </a></button></p>
 

@@ -12,6 +12,11 @@ session_start();
       if (!$conn){
           die("Sorry we failed to connect: ". mysqli_connect_error());
       }else{
-          echo"Connection hotay";
+          ?>
+          <script>
+
+              console.log("Connection hotay");
+          </script>
+          <?php
       }
 ?>

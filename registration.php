@@ -6,9 +6,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $address = $_POST['address'];
     $number= $_POST['number'];
     $email = $_POST['email'];
-    $skill = $_POST['skill'];
-    $username1 = $_POST['username'];
-    $password2 = $_POST['password'];
+    $skill1 = $_POST['skill'];
+    $username1 = $_POST['uname'];
+    $password2 = $_POST['pass'];
   
   // Connecting to the Database
   $servername = "localhost";
@@ -27,8 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     // Sql query to be executed 
     
      $sql = "INSERT INTO `player_info` ( `p_name`, `DOB`, `age`, `address`, `ph_no`, `email_id`, `skill`, `username`, `password`)
-     VALUES ('$name', '$DOB', '$age', '$address', '$number', '$email', '$skill', '$username1', '$password2');";
+     VALUES ('$name', '$DOB', '$age', '$address', '$number', '$email', '$skill1', '$username1', '$password2');";
     $result = mysqli_query($conn, $sql);
+  
 
     if($result){
       echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -66,8 +67,77 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
+
+    <!-- <link rel="stylesheet" href="css/registration.css"> -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/registration.css">
+    
+    <style>
+    * {
+    margin: 0;
+    padding: 0;
+}
+    .regform {
+    margin-top: 10px;
+    width: 800px;
+    background-color: rgba(0, 181, 204, 1);
+    margin: auto;
+    color: #FFFFFF;
+    padding: 10px 20px 10px 0px;
+    text-align: center;
+    border-radius: 15px 15px 15px 15px;
+}
+body {
+
+    
+    margin-top: 40px;
+    background-position: center;
+    background-size: cover;
+    font-family: sans-serif;
+    }
+
+    .main {
+        background-color: rgba(12, 117, 136, 0.6);
+        width: 800px;
+        margin: auto;
+        border-radius: 15px 15px 15px 15px;
+    }
+
+    button {
+    background-color: #3BAF9F;
+    display: block;
+    margin: 20px 20px 20px 20px;
+    text-align: right;
+    border-radius: 12px;
+    border: 2px solid #366473;
+    padding: 14px 355px;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    transition: 0.25px;
+}
+.radio {
+    display: inline-block;
+    padding-right: 70px;
+    font-size: 25px;
+    margin-left: 25px;
+    margin-top: 15px;
+    color: white;
+}
+
+.radio input {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    outline: none;
+}
+
+    button:hover {
+        background-color: #5390F5;
+    }
+    </style>
+
 
 
 
@@ -88,39 +158,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                     <li><a href="#">ABOUT US</a></li>
                     <li><a href="#">SEARCH</a></li>
                     <li><a href="#">DISPLAY</a></li>
-                    <!--mahit nahi ata kahi hyabadal-->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                            aria-expanded="false"><i class="glyphicon glyphicon-cog"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li class="divider"></li>
-                            <li><a href="../Profile/profile.php"><i class="glyphicon glyphicon-user"></i>&nbsp;
-                                    Profile</a></li>
-                            <li class="divider"></li>
-                            <li><a href="../Profile/logout.php"><i class="glyphicon glyphicon-log-out"></i>&nbsp;
-                                    Logout</a></li>
-                        </ul>
-                    </li>
+                  
                 </ul>
             </div>
-        </div>
+        </div>    
     </nav>
-    <!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1RzLoyCGcOuJP2l82TUIVy1tfFl6Z7Epo6A&usqp=CAU" alt="Smiley face" height="500" width="300" style="float:right"> -->
+
+    <div class="regform">
+        <h1>Registration Form</h1>
+        <img src="img/OIP (1).jpg" alt="user" class="avatar">
+    </div>
+
+    <div class="main bg-dark" >
+      
+             <h2>Registration Form</h2>
 
 
-    <div class="container">
-        <div class="row">
-            <div class=" col-lg-6">
-                
-                <h2>Registration Form</h2>
+            <form action=""class="form-group " name="myForm" method="post">
 
 
-                <form action="" name="myForm"  method="post">
-                    <br>
-                    <br>
-                    <br>
-
-                    <div class="form-group" id="user">
+                <div class="form-group " id="name">
                         <label>Player Name</label>
                         <input type="text" name="user" class="form-control" placeholder="Enter Name" required>
                         <b><span class="formerror"></span></b>
@@ -147,7 +204,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
                     <div class="form-group" id="number">
                         <label>Phone Number</label>
-                        <input type="text" min="1111111111" max="9999999999" name="number" class="form-control" placeholder="Enter Number" required>
+                        <input type="text" minlength=10 maxlength=10 name="number" class="form-control" placeholder="Enter Number" required>
                         <b><span class="formerror"></span></b>
                     </div>
 
@@ -160,17 +217,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
                     <div class="form-group" id="skill">
 
-                        <p>Please select your skill:</p>
-                        <input type="radio" id="batsman" name="skill" value="batsman" class="form-control" required>
-                        <b><span class="formerror"></span></b>
-                        <label for="batsman">batsman</label><br>
-                        <input type="radio" id="bowler" name="skill" value="bowler" class="form-control" required>
-                        <b><span class="formerror"></span></b>
-                        <label for="Bowler">bowler</label><br>
-                        <input type="radio" id="allrounder" name="skill" value="All-Rounder" class="form-control"
-                            required>
-                        <b><span class="formerror"></span></b>
-                        <label for="All-Rounder">All-Rounder</label>
+                        
+
+                        <h2 class="name">Select Type</h2>
+                            <select class="form-control" name="skill" required id="skill">
+                                <option disabled="disabled" selected="selected">--Choose option--</option>
+                                <option>Batsman</option>
+                                <option>Bowler</option>
+                                <option>All-Rounder</option>
+                            </select>
 
 
                     </div>
@@ -191,18 +246,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                     </div>
 
                     <div>
-                         <input type="submit" class="but" name="submit" value="Submit"> 
+                         <button type="submit"  class="but" name="submit" value="Submit">Register</button>
                      </div> 
-                    
-
-                </form>
-
-
-            </div>
+                </div>
+            </form>
         </div>
     </div>
 
-    
+
 
 
     <!-- Optional JavaScript -->

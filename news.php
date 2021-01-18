@@ -1,18 +1,16 @@
-<?php
 
-include'config.php';
+ <?php
+    include('connection.inc.php');
+     $query1 =mysqli_query($conn,"select * from news order by id desc limit 1,2 ");
+      while($row=mysqli_fetch_array($query1)){
+         $category=$row['category'];
+         $date=$row['date'];
+         $title=$row['title'];
+        //  $thumbnail=$row['thumbnail'];
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $phone = $_POST['phone'];
-  $message = $_POST['message'];
+      
 
-  
-
-}
-?>
-
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,8 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         <div class="card">
           <img class="card-img-top" src="img/logo1.png" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <h5 class="card-title"><?php eho $row'[title]' ?></h5>
+            <p class="card-text"><?php eho $row'[]' ?></p>
             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
           </div>
         </div>

@@ -49,6 +49,20 @@ $result = mysqli_query($conn, $sql);
   <link rel="stylesheet" href="css/style.css">
   <script src="script.js"></script>
   <!-- <script src="jquery.validate.min.js"></script> -->
+  <style>
+    #fixed {
+  background: url(BACKGROUNDFIXED.jpg) no-repeat center center fixed;
+  display: table;
+  height: 90%;
+  width: 100%;
+  position: relative;
+  background-size: cover;
+  font-size: 50px;
+  }
+
+  
+
+  </style>
 </head>
 
 <body>
@@ -66,16 +80,8 @@ $result = mysqli_query($conn, $sql);
           <li><a href="#">ABOUT US</a></li>
           <li><a href="#">SEARCH</a></li>
           <li><a href="#">DISPLAY</a></li>
-          <!--mahit nahi ata kahi hyabadal-->
-          <li class="dropdown">
-               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="glyphicon glyphicon-cog"></i></a>
-                <ul class="dropdown-menu" role="menu">
-                   <li class="divider"></li>
-                   <li><a href="../Profile/profile.php"><i class="glyphicon glyphicon-user"></i>&nbsp; Profile</a></li>
-                   <li class="divider"></li>
-                   <li><a href="../Profile/logout.php"><i class="glyphicon glyphicon-log-out"></i>&nbsp; Logout</a></li>
-                </ul>
-            </li>
+         
+          
         </ul>
       </div>
     </div>
@@ -218,12 +224,12 @@ $result = mysqli_query($conn, $sql);
         <div class="row">
           <div class="col-sm-6">
             <h4>About Us</h4>
-            <p></p>
-            <p> We at RAKA team beleive that the most deserving player should get an opportunity to showcase the talent. Our Website 
+            
+            <p style="font-size: medium;" > We at RAKA team beleive that the most deserving player should get an opportunity to showcase the talent. Our Website 
             Cricket will help us to manage cricket within seconds. </p>
           </div>
           <!-- <div class="col-sm-6">
-            <img src="" alt="">
+            <img src="img/cricketlogo.png" alt="">
           </div> -->
         </div>
       </div>
@@ -257,10 +263,10 @@ $result = mysqli_query($conn, $sql);
             <h3>Connect</h3>
             <li>
 
-                <a href="#" class="fa fa-facebook"></a>
-                <a href="#" class="fa fa-twitter"></a>
-                <a href="#" class="fa fa-google"></a>
-                <a href="#" class="fa fa-linkedin"></a>
+                <a href="https://www.facebook.com/" target="_blank" class="fa fa-facebook"></a>
+                <a href="https://twitter.com/?lang=en" target="_blank" class="fa fa-twitter"></a>
+                <a href="https://www.google.com/" target="_blank" class="fa fa-google"></a>
+                <a href="https://in.linkedin.com/" target="_blank" class="fa fa-linkedin"></a>
                 
             </li>
           </div>
@@ -268,13 +274,13 @@ $result = mysqli_query($conn, $sql);
         
       </div>
       <div id="error_message"></div>
-      <div class="col-md-8" onsubmit="return validationcontactus()">
+      <div class="col-md-8" onsubmit="return contactform()">
         <form class="contact-bg" id="contact-form" name="contact" method="post" >
           <input type="text" name="name" class="form-control" placeholder="Your Name" required>
           <input type="email" name="email" class="form-control" placeholder="Your E-mail" required>
-          <input type="text" name="phone" class="form-control" placeholder="Phone Number" required>
+          <input type="text" name="phone" maxlength=10 minlength=10 class="form-control" placeholder="Phone Number" required>
           <textarea name="message" class="form-control" placeholder="Your Message" required style="height:120px"></textarea>
-          <button id="submit" type="submit" name="submit" class="btn btn-glance" required>Send</button>
+          <input id="submit" type="submit" name="submit" class="btn btn-glance" required>Send</input>
           <!-- <div id="success">
             <p class="green textcenter"> Your message was sent successfully! I will be in touch as soon as I can. </p>
           </div>
@@ -282,6 +288,40 @@ $result = mysqli_query($conn, $sql);
             <p> Something went wrong, try refreshing and submitting the form again. </p>
           </div> -->
         </form>
+        <script>
+			
+      function contactform(){
+        var x = document.forms['contact']['name'].value;
+        var y = document.forms['contact']['email'].value;
+        var z = document.forms['contact']['phone'].value;
+        var w = document.forms['contact']['message'].value;
+        if (x=="") {
+           alert('Name Must Be Filled Out !');
+           return false;
+         }
+         if (y=="") {
+           alert('Email Must Be Filled Out !');
+           return false;
+         }
+         if (z=="") {
+           alert('phone Must Be Filled Out !');
+           return false;
+         }
+         if(z>10){
+           alert("phone number only 10 digit!");
+           return false;
+         }
+         if (w=="") {
+           alert('message Must Be Filled Out !');
+           return false;
+         }
+         
+         
+         }
+         
+      }
+
+   </script>
       </div>
     </div>
   </div>
@@ -293,6 +333,9 @@ $result = mysqli_query($conn, $sql);
   <div>
   <button href="Admin-Page-master\admin\login.php">admin login</button>
   </div>
+
+
+  
 </body>
 
 </html>
